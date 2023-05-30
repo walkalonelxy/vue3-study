@@ -1,0 +1,44 @@
+
+@import url('../../src/assets/base.css');
+
+/** BEM架构
+ * @description: BEM架构分为块层（-）、元素层（__）、修饰层（--）
+ * @return {*}
+ */
+$namespace: 'lxy'; // 命名空间
+$block-sel: '-' !default; // 块
+$ele-sel: '__' !default; // 块内的元素
+$mod-sel: '--' !default; // 对元素进行修饰
+
+// block 块层
+@mixin b($block) {
+    $B: #{ $namespace + $block-sel + $block };
+    .#{ $B } {
+        @content;
+    }
+}
+
+// element 元素层
+@mixin e($el) {
+    $selector: &;
+    @at-root {
+        #{ $selector + $ele-sel + $el } {
+            @content;
+        }
+    }
+}
+
+// modifier 修饰层
+@mixin m($mod) {
+    $selector: &;
+    @at-root {
+        #{ $selector + $mod-sel + $mod } {
+            @content;
+        }
+    }
+}
+
+@mixin bfc {
+    height: 100%;
+    overflow: hidden;
+}
