@@ -18,7 +18,7 @@ import { ref, reactive, toRefs, onMounted, watch} from "vue"
 import { useRouter } from "vue-router"
 withDefaults(defineProps<{
     list: any[]
-}>(), {
+}>(), { 
     list: () => []
 })
 const emit = defineEmits<{
