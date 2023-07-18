@@ -15,6 +15,7 @@
         <RandomNum></RandomNum>
         <Nest></Nest>
         <Brother></Brother>
+        <BtnAuth></BtnAuth>
     </div>
 </template>
 
@@ -25,6 +26,7 @@ import List from '@/components/List/index.vue'
 import RandomNum from '@/components/RandomNum/index.vue'
 import Nest from '@/components/Nest/index.vue'
 import Brother from '@/components/Brother/index.vue'
+import BtnAuth from '@/components/Directive/BtnAuth/index.vue'
 const list = ref<InstanceType<typeof List>>()
 const customSlot = ref('header')
 const submit = (obj: object) => {
