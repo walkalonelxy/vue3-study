@@ -1,6 +1,6 @@
 <template>
 <div class="btn-wrap">
-    <button v-has="'list:add'">添加</button>
+    <button v-has="'list:add'">添加1</button>
     <button v-has="'list:edit'">编辑</button>
     <button v-has="'list:delete'">删除</button>
 </div>
