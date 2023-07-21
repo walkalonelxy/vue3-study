@@ -1,13 +1,13 @@
 <template>
 <div class="btn-wrap">
     <button v-has="'list:add'">添加1</button>
-    <button v-has="'list:edit'">编辑</button>
+    <button v-has="'list:edit'">编辑333</button>
     <button v-has="'list:delete'">删除</button>
 </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref, computed} from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Directive, DirectiveBinding } from 'vue';
 
@@ -21,6 +21,4 @@ const vHas: Directive<HTMLElement, string> = (el, binding) => {
 }
 
 </script>
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
