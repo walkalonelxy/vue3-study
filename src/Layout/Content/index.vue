@@ -1,21 +1,26 @@
 <template>
     <div class="lxy-content">
-        <List ref="list" :list="[1, 2, 3, 4]" @submit="submit">
-            <template #header>
-                头部自定义
-            </template>
-            <template #default="{ item }">
-                {{ item + 2 }}
-            </template>
-            <template #[customSlot]="{ data }">
-                {{ data }}
-            </template>
-        </List>
-        
-        <RandomNum></RandomNum>
-        <Nest></Nest>
-        <Brother></Brother>
-        <BtnAuth></BtnAuth>
+        <div class="lxy-content__left">
+            <List ref="list" :list="[1, 2, 3, 4]" @submit="submit">
+                <template #header>
+                    头部自定义
+                </template>
+                <template #default="{ item }">
+                    {{ item + 2 }}
+                </template>
+                <template #[customSlot]="{ data }">
+                    {{ data }}
+                </template>
+            </List>
+            <RandomNum></RandomNum>
+            <Nest></Nest>
+            <Brother></Brother>
+            <BtnAuth></BtnAuth>
+            <HooksCase></HooksCase>
+        </div>
+        <div class="lxy-content__right">
+            <!-- <LazyLoadImg></LazyLoadImg> -->
+        </div>
     </div>
 </template>
 
@@ -27,6 +32,8 @@ import RandomNum from '@/components/RandomNum/index.vue'
 import Nest from '@/components/Nest/index.vue'
 import Brother from '@/components/Brother/index.vue'
 import BtnAuth from '@/components/Directive/BtnAuth/index.vue'
+import HooksCase from '@/components/HooksCase/index.vue'
+import LazyLoadImg from '@/components/LazyLoadImg/index.vue'
 const list = ref<InstanceType<typeof List>>()
 const customSlot = ref('header')
 const submit = (obj: object) => {
@@ -38,5 +45,6 @@ const submit = (obj: object) => {
 <style scoped lang="scss">
 @include b(content) {
     flex: 1;
+    display: flex;
 }
 </style>

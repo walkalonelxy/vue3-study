@@ -17,8 +17,8 @@ const change = () => {
 </script>
 <style scoped lang="scss">
 .block {
-    width: 50px;
-    height: 50px;
+    width: 10px;
+    height: 10px;
     background-color: v-bind(colorVal);
 }
 </style>

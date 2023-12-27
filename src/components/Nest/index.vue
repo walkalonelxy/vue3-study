@@ -25,8 +25,8 @@ provide('color', readonly(colorVal)) // 如果设置了readonly，子级将无�
     display: flex;
     align-items: center;
     .block {
-        width: 50px;
-        height: 50px;
+        width: 10px;
+        height: 10px;
         background-color: v-bind(colorVal);
     }
 }
