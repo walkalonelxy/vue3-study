@@ -1,0 +1,3 @@
+/* @tailwind base; 这个模块会影响antd的部分组件样式 */
+@tailwind components;
+@tailwind utilities;

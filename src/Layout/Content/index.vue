@@ -16,9 +16,14 @@
             <Nest></Nest>
             <Brother></Brother>
             <BtnAuth></BtnAuth>
-            <HooksCase></HooksCase>
+            <HooksCase>
+                <div class="test mt-2.5">abc</div>
+            </HooksCase>
         </div>
         <div class="lxy-content__right">
+            <CssDemo>
+                <div class="text">我是插槽里面的内容, 我想修改样式</div>
+            </CssDemo>
             <!-- <LazyLoadImg></LazyLoadImg> -->
         </div>
     </div>
@@ -34,6 +39,7 @@ import Brother from '@/components/Brother/index.vue'
 import BtnAuth from '@/components/Directive/BtnAuth/index.vue'
 import HooksCase from '@/components/HooksCase/index.vue'
 import LazyLoadImg from '@/components/LazyLoadImg/index.vue'
+import CssDemo from '@/components/CssDemo/index.vue'
 const list = ref<InstanceType<typeof List>>()
 const customSlot = ref('header')
 const submit = (obj: object) => {

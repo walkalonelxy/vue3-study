@@ -2,6 +2,7 @@
 <div class="hooks-case" v-resize="getBoxStatus">
     <img id="img" src="../../assets/imgs/a.png" alt="">
     <img :src="url" alt="">
+    <slot></slot>
 </div>
 </template>
 
@@ -34,5 +35,9 @@ const getBoxStatus = (val: any) => {
         width: 30px;
         height: 50px;
     }
+    :slotted(.test) {
+        color: red;
+    }
 }
+
 </style>

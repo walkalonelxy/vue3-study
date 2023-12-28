@@ -9,6 +9,5 @@
 import Brother1 from './Brother1.vue';
 import Brother2 from './Brother2.vue';
 </script>
-<style scoped lang="less">
-
+<style scoped lang="scss">
 </style>
