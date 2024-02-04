@@ -10,6 +10,15 @@ export default defineConfig({
     imports: ['vue', 'vue-router'],
     dts: 'src/auto-import.d.ts'
   })],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

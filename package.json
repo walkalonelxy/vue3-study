@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --host --open",
+    "dev": "vite --host --open --mode development",
     "test": "echo test",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
@@ -14,7 +14,7 @@
   "dependencies": {
     "ant-design-vue": "^4.0.8",
     "lodash": "^4.17.21",
-    "pinia": "^2.0.28",
+    "pinia": "^2.1.6",
     "v-resize-lxy": "^1.0.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"

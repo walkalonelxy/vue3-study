@@ -1,31 +1,61 @@
 <template>
-<div class="css-demo">
-    <div>我是css-demo</div>
-    <div class="box" @click="updateStyle">{{ text }}</div>
+<div :class="[$style['css-demo']]">
+    <div>我是css-demo1</div>
+    <!-- 添加多个class 数组形式 -->
+    <div :class="[$style.text, $style.bg]">class对象默认使用$style作为变量名</div>
+    <!-- 添加多个class 对象形式 -->
+    <div :class="{[$style.text]: true}">class对象默认使用$style作为变量名</div>
+</div>
+<div :class="custom['css-demo']">
+    <div @click="test">我是css-demo2</div>
+    <div :class="custom.text">class对象使用自定义变量名</div>
 </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
-let bgColor = ref('red');
-let textStyle = reactive({
-    color: '#fff'
-})
-let text = ref('样式修改前');
-// 修改样式
-const updateStyle = () => {
-    bgColor.value = 'blue'
-    textStyle.color = 'red'
-    text.value = '样式修改后'
-}
+import { useCssModule } from 'vue';
+// 我们可以通过useCssModule来访问对应module的class对象
+const def = useCssModule(); // 获取默认的class对象
+console.log('def', def);
+const custom = useCssModule('custom'); // 获取module名为custom的class对象
+console.log('custom', custom);
+
+const emit = defineEmits<{
+    (e: 'test', val: string): void
+    (e: 'test1', val: string): void
+}>()
+ const test = () => {
+    emit('test', 'test')
+    emit('test1', 'test1')
+ }
+
+//  fetch('/api/user').then(res => res.json()).then(res => {
+//     console.log('res', res)
+//  })
 </script>
-<style scoped lang="scss">
+<!-- 默认使用$style作为变量名 -->
+<style module lang="scss">
+:global(:root) {
+    --var-color: red
+}
 .css-demo {
-    .box {
-        width: 100px;
-        height: 100px;
-        border: 1px solid red;
-        background: v-bind(bgColor); // 通过v-bind实现背景响应式更新
-        color: v-bind('textStyle.color'); // 如果绑定的是一个对象, v-bind中的value需要用引号引起来
+    .text{
+        color: var(--var-color);
+        &.bg {
+            background-color: #f3f;
+        }
     }
 }
 </style>
+<!-- 自定义变量名 -->
+<style module="custom" lang="scss">
+.css-demo {
+    .bg {
+        background: #000;
+    }
+    .text {
+        color: skyblue;
+    }
+}
+</style>
+
+

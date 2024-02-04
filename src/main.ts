@@ -1,3 +1,12 @@
+/*
+ * @Author: 梁小鱼
+ * @Date: 2023-12-27 11:35:31
+ * @LastEditors: lxy
+ * @LastEditTime: 2024-02-02 15:35:11
+ * @FilePath: \vue3-study\src\main.ts
+ * @Description: 
+ * Copyright (c) 2024 by lxy, All Rights Reserved.
+ */
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 

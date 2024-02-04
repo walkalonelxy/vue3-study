@@ -21,10 +21,11 @@
             </HooksCase>
         </div>
         <div class="lxy-content__right">
-            <CssDemo>
+            <CssDemo @test="test" @test1="test1">
                 <div class="text">我是插槽里面的内容, 我想修改样式</div>
             </CssDemo>
             <!-- <LazyLoadImg></LazyLoadImg> -->
+            <H></H>
         </div>
     </div>
 </template>
@@ -40,12 +41,19 @@ import BtnAuth from '@/components/Directive/BtnAuth/index.vue'
 import HooksCase from '@/components/HooksCase/index.vue'
 import LazyLoadImg from '@/components/LazyLoadImg/index.vue'
 import CssDemo from '@/components/CssDemo/index.vue'
+import H from '@/components/H/index.vue'
 const list = ref<InstanceType<typeof List>>()
 const customSlot = ref('header')
 const submit = (obj: object) => {
-    console.log('vvv', obj);
+    console.log('vvv', obj);  
     console.log('list.value?.name', list.value?.name);
     list.value?.fn()
+}
+const test = (val: string) => {
+    console.log('v',val);
+}
+const test1 = (val: string) => {
+    console.log('v', val);
 }
 </script>
 <style scoped lang="scss">
