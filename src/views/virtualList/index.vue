@@ -1,12 +1,3 @@
-<!--
- * @Author: 梁小鱼
- * @Date: 2024-02-02 16:46:44
- * @LastEditors: lxy
- * @LastEditTime: 2024-02-04 10:39:15
- * @FilePath: \vue3-study\src\views\virtualList\index.vue
- * @Description: 
- * Copyright (c) 2024 by lxy, All Rights Reserved.
--->
 <template>
     <div class="test" @scroll="onScroll">
         <div class="scroll" style="height:50000px">
