@@ -1,7 +1,7 @@
 <template>
     <div class="test" @scroll="onScroll">
-        <div class="scroll" style="height:50000px">
-            <div class="list" :style="{ willChange: 'transform', transform: `translateY(${translateY}px)` }">
+        <div class="scroll" style="height:60000px">
+            <div class="list" :style="{ transform: `translateY(${translateY}px)` }">
                 <div :style="{ background: item % 2 ? 'rgba(255, 255, 0, .5)' : 'rgba(255, 0, 0, .5)' }"
                     v-for="(item, index) in listData" :key="item">
                     {{ item }}
@@ -17,18 +17,18 @@ export default {
     data() {
         return {
             allData: [],
-            start: 0,
-            end: 10,
+            startIndex: 0,
+            endIndex: 10,
             translateY: 0,
             cacheCount: 5 
         }
     },
     computed: {
         listData() {
-            const { start, end } = this;
-            return this.allData.slice(start, end);
+            const { startIndex, endIndex } = this;
+            return this.allData.slice(startIndex, endIndex);
         }
-    },
+    },  
     mounted() {
         this.allData = Array.from({ length: 1000 }, (v, i) => i + 1);
 
@@ -36,11 +36,17 @@ export default {
     methods: {
         onScroll(e) {
             const { scrollTop } = e.target;
-            this.start = Math.floor(scrollTop / 50);
-            this.end = this.start + 10 + this.cacheCount;
-            this.translateY = scrollTop - (scrollTop % 50);
-            console.log('scrollTop', scrollTop);
-            console.log('scrollTop % 50', scrollTop % 50);
+            if (this.translateY === scrollTop) return;
+            this.startIndex = Math.floor(scrollTop / 60);
+            this.endIndex = this.startIndex + 10 + this.cacheCount;
+            if (this.startIndex > this.cacheCount) {
+                this.startIndex = this.startIndex - this.cacheCount;
+                this.translateY = scrollTop - (scrollTop % 60) - this.cacheCount * 60;
+            } else { 
+                this.translateY = scrollTop - (scrollTop % 60);
+            }
+            
+            
         },
 
     }
@@ -56,9 +62,9 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
-    height: 500px;
+    height: 600px;
     border: 1px solid rgb(255, 0, 0);
-
+    color: #fff;
     &::-webkit-scrollbar {
         width: 15px;
         background-color: rgba($color: #000000, $alpha: 0.1);
@@ -72,9 +78,9 @@ export default {
 
         .list {
             width: 50%;
-
+            // transition: transform 0.1s;
             >div {
-                height: 50px;
+                height: 60px;
                 // &:nth-child(2n) {
                 //     background-color: rgba(255, 255, 0, .5);
                 // }
